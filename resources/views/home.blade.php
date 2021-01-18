@@ -13,7 +13,14 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    My entries 
+                        <ul>
+                        @foreach ($entries as $entry)
+                                <li>
+                                    <a href="{{ url('entries/'.$entry->id) }}">{{$entry->title}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                 </div>
             </div>
         </div>
