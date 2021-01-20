@@ -19,6 +19,9 @@ class CreateEntriesTable extends Migration
             $table->text('content');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+
+            /* Slug */
+            $table->string('slug');
             $table->timestamps();
         });
     }
