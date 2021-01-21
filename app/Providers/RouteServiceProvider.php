@@ -35,10 +35,9 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-        Route::bind('entry', function($value){
+        Route::bind('entryBySlug', function($value){
             $parts = explode('-', $value);
-            $id = end($parts);
-            
+            $id = end($parts);            
             $entry = Entry::findOrFail($id);
             if($entry->slug.'-'.$entry->id === $value){
                 return $entry;
