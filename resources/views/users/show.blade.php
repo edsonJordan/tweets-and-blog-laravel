@@ -21,8 +21,12 @@
                         </div>
                     @endif
                     <p>Published entries </p>
-                    <ul>
-                  
+                    <ul>                        
+                        @foreach ($entries as $entry)
+                                <li>
+                                    <a href="{{ $entry->getUrl() }}">{{$entry->title}}</a>
+                                </li>
+                            @endforeach
                         </ul>
          
                     <hr>                    
