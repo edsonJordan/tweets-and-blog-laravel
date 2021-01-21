@@ -29,12 +29,14 @@ class EntryController extends Controller
         $status = 'Your entry has been published successfully';
         return back()->with(compact('status'));
     }
-    public function edit(Entry $entry){            
+    public function edit(Entry $entry){   
+        $this->authorize('update', $entry);
         return view('entries.edit', compact('entry'));
     }
 
     public function update(Request $request, Entry $entry){
         //dd($request->all());
+        $this->authorize('update', $entry);
         $validatedData = $request->validate([
             'title' => 'required|min:7|max:255|unique:entries,id,'.$entry->id,
             'content' => 'required|min:25|max:3000'
